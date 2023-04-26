@@ -39,7 +39,7 @@ public class JezykiController {
 
     @GetMapping("/lang/update/{id}")
     public String showFormForUpdate(@PathVariable(value="id") int id, Model model) {
-        Jezyki jezyk = jezykiService.getJezykById(id);
+        Jezyki jezyk = jezykiService.getLangById(id);
         model.addAttribute("jezyk", jezyk);
         return "update_jezyk";
     }
@@ -47,7 +47,7 @@ public class JezykiController {
     @GetMapping("/lang/delete/{id}")
     public String deleteCourse(@PathVariable (value = "id") int id) {
 
-        this.jezykiService.deleteJezykById(id);
+        this.jezykiService.deleteLangById(id);
         return "redirect:/lang/";
     }
 }

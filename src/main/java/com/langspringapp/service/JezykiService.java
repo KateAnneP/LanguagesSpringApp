@@ -22,11 +22,11 @@ public class JezykiService {
         jezykiRepository.save(jezyki);
     }
 
-    public Jezyki getJezykById(Integer id) {
+    public Jezyki getLangById(Integer id) {
         return jezykiRepository.findById(id).get();
     }
 
-    public void deleteJezykById(Integer id) {
+    public void deleteLangById(Integer id) {
         jezykiRepository.deleteById(id);
     }
 }
