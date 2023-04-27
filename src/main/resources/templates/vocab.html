@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Languages</title>
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container my-2">
+  <h1>All vocabulary list</h1>
+
+  <a th:href = "@{/add}" class="btn btn-primary btn-sm mb-3"> Add new vocabulary </a>
+
+  <table border="1" class = "table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Word</th>
+      <th>Translation</th>
+      <th>Language</th>
+      <th>Set</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="word : ${slowkaList}">
+      <td th:text="${word.slowko}"></td>
+      <td th:text="${word.tlumaczenie}"></td>
+      <td th:text="${word.jezyk}"></td>
+      <td th:text="${word.zestaw}"></td>
+      <td th:text="${word.kategoria}"></td>
+      <td> <a th:href="@{/update/{id}(id=${jezyk.id})}" class="btn btn-primary">Update</a>
+        <a th:href="@{/delete/{id}(id=${jezyk.id})}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

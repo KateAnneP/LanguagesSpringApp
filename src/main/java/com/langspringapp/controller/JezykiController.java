@@ -18,21 +18,21 @@ public class JezykiController {
     private JezykiService jezykiService;
 
     @GetMapping("/lang")
-    public String viewHomePage(Model model) {
+    public String viewLangPage(Model model) {
         List<Jezyki> jezykiList = jezykiService.listAll();
         model.addAttribute("jezykiList", jezykiList);
         return "lang";
     }
 
     @GetMapping("/lang/add")
-    public String showNewJezykForm(Model model) {
+    public String showNewLangForm(Model model) {
         Jezyki jezyk = new Jezyki();
         model.addAttribute("jezyk", jezyk);
-        return "new_jezyk";
+        return "new_lang";
     }
 
     @PostMapping("/lang/save")
-    public String saveJezyk(@ModelAttribute("jezyk") Jezyki jezyk) {
+    public String saveLang(@ModelAttribute("jezyk") Jezyki jezyk) {
         jezykiService.save(jezyk);
         return "redirect:/lang/";
     }
@@ -41,12 +41,11 @@ public class JezykiController {
     public String showFormForUpdate(@PathVariable(value="id") int id, Model model) {
         Jezyki jezyk = jezykiService.getLangById(id);
         model.addAttribute("jezyk", jezyk);
-        return "update_jezyk";
+        return "update_lang";
     }
 
     @GetMapping("/lang/delete/{id}")
-    public String deleteCourse(@PathVariable (value = "id") int id) {
-
+    public String deleteLang(@PathVariable (value = "id") int id) {
         this.jezykiService.deleteLangById(id);
         return "redirect:/lang/";
     }
