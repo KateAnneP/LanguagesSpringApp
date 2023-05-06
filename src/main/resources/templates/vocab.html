@@ -35,8 +35,8 @@
       <td th:text="${word.jezyk}"></td>
       <td th:text="${word.zestaw}"></td>
       <td th:text="${word.kategoria}"></td>
-      <td> <a th:href="@{/update/{id}(id=${jezyk.id})}" class="btn btn-primary">Update</a>
-        <a th:href="@{/delete/{id}(id=${jezyk.id})}" class="btn btn-danger">Delete</a>
+      <td> <a th:href="@{/update/{id}(id=${word.id})}" class="btn btn-primary">Update</a>
+        <a th:href="@{/delete/{id}(id=${word.id})}" class="btn btn-danger">Delete</a>
       </td>
     </tr>
     </tbody>

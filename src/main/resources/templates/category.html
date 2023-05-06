@@ -27,8 +27,8 @@
         <tbody>
         <tr th:each="cat : ${kategorieList}">
             <td th:text="${cat.nazwa}"></td>
-            <td> <a th:href="@{/update/{id}(id=${user.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a>
+            <td> <a th:href="@{/update/{id}(id=${cat.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/delete/{id}(id=${cat.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
