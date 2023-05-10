@@ -36,7 +36,7 @@ public class ZestawyController {
     @PostMapping("/sets/save")
     public String saveSet(@ModelAttribute("jezyk") Zestawy zestaw) {
         zestawyService.save(zestaw);
-        return "redirect:/sets/";
+        return "redirect:/sets";
     }
 
     @GetMapping("/sets/update/{id}")
@@ -49,6 +49,6 @@ public class ZestawyController {
     @GetMapping("/sets/delete/{id}")
     public String deleteSet(@PathVariable (value = "id") int id) {
         this.zestawyService.deleteSetById(id);
-        return "redirect:/sets/";
+        return "redirect:/sets";
     }
 }

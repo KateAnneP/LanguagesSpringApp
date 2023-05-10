@@ -36,7 +36,7 @@ public class UsersController {
     @PostMapping("/users/save")
     public String saveUser(@ModelAttribute("jezyk") Users user) {
         usersService.save(user);
-        return "redirect:/users/";
+        return "redirect:/users";
     }
 
     @GetMapping("/users/update/{id}")
@@ -49,6 +49,6 @@ public class UsersController {
     @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable (value = "id") int id) {
         this.usersService.deleteUserById(id);
-        return "redirect:/users/";
+        return "redirect:/users";
     }
 }

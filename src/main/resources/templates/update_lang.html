@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Zaktualizuj język</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Języki</h1>
+    <hr>
+    <h2>Zaktualizuj język</h2>
+
+    <form action="#" th:action="@{/lang/save}" th:object="${jezyk}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{nazwa}" class="form-control mb-4 col-4" placeholder="Nazwa języka">
+        <button type="submit" class="btn btn-info col-2">Zaktualizuj</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/lang}">Powrót do listy języków</a>
+</div>
+</body>
+</html>

@@ -36,7 +36,7 @@ public class SlowkaController {
     @PostMapping("/vocab/save")
     public String saveVocab(@ModelAttribute("slowko") Slowka slowko) {
         slowkaService.save(slowko);
-        return "redirect:/vocab/";
+        return "redirect:/vocab";
     }
 
     @GetMapping("/vocab/update/{id}")
@@ -49,6 +49,6 @@ public class SlowkaController {
     @GetMapping("/vocab/delete/{id}")
     public String deleteVocab(@PathVariable (value = "id") int id) {
         this.slowkaService.deleteWordById(id);
-        return "redirect:/vocab/";
+        return "redirect:/vocab";
     }
 }

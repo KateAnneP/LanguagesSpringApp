@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Zaktualizuj zestaw</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Zestawy</h1>
+    <hr>
+    <h2>Zaktualizuj zestaw</h2>
+
+    <form action="#" th:action="@{/sets/save}" th:object="${zestaw}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{nazwa}" class="form-control mb-4 col-4" placeholder="Nazwa zestawu">
+        <input type="text" th:field="*{owner}" class="form-control mb-4 col-4" placeholder="W?a?ciciel zestawu">
+        <input type="text" th:field="*{jezyk}" class="form-control mb-4 col-4" placeholder="J?zyk">
+        <button type="submit" class="btn btn-info col-2">Zaktualizuj</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/sets}">Powrót do listy zestawów</a>
+</div>
+</body>
+</html>

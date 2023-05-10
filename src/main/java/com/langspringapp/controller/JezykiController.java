@@ -34,7 +34,7 @@ public class JezykiController {
     @PostMapping("/lang/save")
     public String saveLang(@ModelAttribute("jezyk") Jezyki jezyk) {
         jezykiService.save(jezyk);
-        return "redirect:/lang/";
+        return "redirect:/lang";
     }
 
     @GetMapping("/lang/update/{id}")
@@ -47,6 +47,6 @@ public class JezykiController {
     @GetMapping("/lang/delete/{id}")
     public String deleteLang(@PathVariable (value = "id") int id) {
         this.jezykiService.deleteLangById(id);
-        return "redirect:/lang/";
+        return "redirect:/lang";
     }
 }

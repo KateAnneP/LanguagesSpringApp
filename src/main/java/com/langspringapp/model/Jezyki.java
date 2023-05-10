@@ -9,11 +9,11 @@ import java.util.Objects;
 public class Jezyki {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    //@Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "jezyk")
-    private String jezyk;
+    @Column(name = "nazwa")
+    private String nazwa;
 
     public int getId() {
         return id;
@@ -23,12 +23,12 @@ public class Jezyki {
         this.id = id;
     }
 
-    public String getJezyk() {
-        return jezyk;
+    public String getNazwa() {
+        return nazwa;
     }
 
-    public void setJezyk(String jezyk) {
-        this.jezyk = jezyk;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 
     @Override
@@ -36,11 +36,11 @@ public class Jezyki {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Jezyki jezyki = (Jezyki) o;
-        return id == jezyki.id && Objects.equals(jezyk, jezyki.jezyk);
+        return id == jezyki.id && Objects.equals(nazwa, jezyki.nazwa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, jezyk);
+        return Objects.hash(id, nazwa);
     }
 }

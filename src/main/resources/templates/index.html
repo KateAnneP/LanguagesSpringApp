@@ -7,39 +7,53 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
-
-    <style>
-        .przycisk {
-            background-color: white;
-            color: black;
-            border: 1px solid black;
-        }
-
-        .main_screen {
-            text-align: center;
-        }
-        .content {
-            margin-top: 100px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <img src="photo.jpg" height="100%" width="100%" />
+            <div class="col-sm-2">Logo</div>
+            <div class="col-sm-10">
+
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" th:href="@{/}">Strona główna</a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li><a th:href="@{/sets}">Zestawy</a></li>
+                            <li><a th:href="@{/category}">Kategorie</a></li>
+                            <li><a th:href="@{/lang}">Języki</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Wyloguj się</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
             </div>
-            <div class="col-sm-6 main_screen">
-                <div class="content">
-                    <h1>
-                        Welcome!
-                    </h1>
-                    <form action="login.php" method="post">
-                        <input type="text" id="login" name="login" placeholder="Login"/>
-                        <input type="password" id="passwd" name="passwd" placeholder="Password" />
-                        <input type="submit" class="btn-lg przycisk" value="Login">
-                    </form>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <a th:href="@{/sets}" class="btn btn-default">
+                    <div class="panel_wybor">
+                        <p>Zestawy</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6">
+                <a th:href="@{/category}" class="btn btn-default">
+                <div class="panel_wybor">
+                    <p>Kategorie</p>
                 </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <p>VocAPPulary 2023</p>
+            </div>
+            <div class="col-sm-6">
+                <p>Nie wiem, co tu wpisać generalnie</p>
             </div>
         </div>
     </div>

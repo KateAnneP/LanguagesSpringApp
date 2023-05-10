@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dodawanie języka</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+              crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Języki</h1>
+            <hr>
+            <h2>Dodawanie nowego języka:</h2>
+
+            <form th:action="@{/lang/save}" th:object="${jezyk}" method="POST">
+                <input type="text" th:field="*{nazwa}" placeholder="Nazwa języka" class="form-control mb-4 col-4">
+                <button type="submit" class="btn btn-info col-2">Zapisz</button>
+            </form>
+
+
+            <hr>
+
+            <a th:href = "@{/lang}">Powrót do listy języków</a>
+        </div>
+    </body>
+</html>
