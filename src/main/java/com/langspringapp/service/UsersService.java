@@ -18,6 +18,10 @@ public class UsersService {
         return (List<Users>) usersRepository.findAll();
     }
 
+    public Users findUsersByLogin(String login) {
+        return usersRepository.findUsersByLogin(login);
+    }
+
 
     public void save(Users user) {
         usersRepository.save(user);
