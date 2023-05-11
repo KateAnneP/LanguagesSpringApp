@@ -63,6 +63,7 @@ public class KategorieController {
     public String overviewCategory(@PathVariable (value = "id") int id, Model model) {
         List<Slowka> slowkaList = slowkaService.listAll();
         ArrayList<Slowka> slowkaWKategorii = new ArrayList<Slowka>();
+        int id_slowka = 0; //do ćwiczenia słówek
         for (Slowka s: slowkaList) {
             if(s.getKategoria() == id)
             {
@@ -70,21 +71,25 @@ public class KategorieController {
             }
         }
         model.addAttribute("slowkaWKategorii", slowkaWKategorii);
+        model.addAttribute("id_zestawu",id);
+        model.addAttribute("id_slowka", id_slowka);
         return "category_vocab";
     }
 
     //funkcja do pisania
-//    @GetMapping("/category/overview/writing/{id}/{id_slowka}")
-//    public String writingCategory(@PathVariable (value = "id") int id, Model model) {
-//        List<Slowka> slowkaList = slowkaService.listAll();
-//        ArrayList<Slowka> slowkaWKategorii = new ArrayList<Slowka>();
-//        for (Slowka s: slowkaList) {
-//            if(s.getKategoria() == id)
-//            {
-//                slowkaWKategorii.add(s);
-//            }
-//        }
-//
-//        return
-//    }
+    @GetMapping("/category/overview/writing?{id}&{id_slowka})")
+    public String writingCategory(@PathVariable (value = "id_zestawu") int id, @PathVariable(value = "id_slowka") int id_slowka, Model model) {
+        List<Slowka> slowkaList = slowkaService.listAll();
+        ArrayList<Slowka> slowkaWKategorii = new ArrayList<Slowka>();
+        for (Slowka s: slowkaList) {
+            if(s.getKategoria() == id)
+            {
+                slowkaWKategorii.add(s);
+            }
+        }
+        model.addAttribute("slowkaWKategorii", slowkaWKategorii);
+        model.addAttribute("id_zestawu",id);
+        model.addAttribute("id_slowka",id_slowka);
+        return "writing";
+    }
 }

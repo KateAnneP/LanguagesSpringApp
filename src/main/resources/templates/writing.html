@@ -38,35 +38,21 @@
 </nav>
 
 <div class="container my-2">
-  <h1>All vocabulary list</h1>
+    <div class="row">
+        <div class="col-sm-12">
+            <form>
+                <div class="form-group">
+                    <p th:text="${slowkaWKategorii[${id_slowka}].slowko}"></p>
+                    <input type="text" class="form-control" id="slowko">
+                </div>
+                <button type="submit" class="btn btn-default"><a th:href="@{/category/overview/writing/{id_zestawu}/{id_slowka}(id_slowka=${id_slowka}+1)}">Dalej</a></button>
+            </form>
+        </div>
+    </div>
 
-  <a th:href = "@{/vocab/add}" class="btn btn-primary btn-sm mb-3">Dodaj nowe słówka</a>
-  <a th:href="@{/writing(id=${id_zestawu},id_slowka=${id_slowka})}" class="btn btn-default">Ćwicz pisanie słówek</a>
 
-  <table border="1" class = "table table-striped table-responsive-md">
-    <thead>
-    <tr>
-      <th>Word</th>
-      <th>Translation</th>
-      <th>Language</th>
-      <th>Set</th>
-      <th>Category</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="word : ${slowkaWKategorii}">
-      <td th:text="${word.slowko}"></td>
-      <td th:text="${word.tlumaczenie}"></td>
-      <td th:text="${word.jezyk}"></td>
-      <td th:text="${word.zestaw}"></td>
-      <td th:text="${word.kategoria}"></td>
-      <td> <a th:href="@{/vocab/update/{id}(id=${word.id})}" class="btn btn-primary">Update</a>
-        <a th:href="@{/vocab/delete/{id}(id=${word.id})}" class="btn btn-danger">Delete</a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+
 </div>
 </body>
 </html>

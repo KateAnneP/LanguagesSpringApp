@@ -30,7 +30,7 @@ public class SlowkaController {
     public String showNewVocabForm(Model model) {
         Slowka slowko = new Slowka();
         model.addAttribute("slowko", slowko);
-        return "new_word";
+        return "new_vocab";
     }
 
     @PostMapping("/vocab/save")
@@ -43,7 +43,7 @@ public class SlowkaController {
     public String showFormForUpdate(@PathVariable(value="id") int id, Model model) {
         Slowka slowko = slowkaService.getWordById(id);
         model.addAttribute("slowko", slowko);
-        return "update_word";
+        return "update_vocab";
     }
 
     @GetMapping("/vocab/delete/{id}")
