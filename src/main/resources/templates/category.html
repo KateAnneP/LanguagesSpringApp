@@ -54,7 +54,7 @@
             <td th:text="${cat.nazwa}"></td>
             <td> <a th:href="@{/category/update/{id}(id=${cat.id})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/category/delete/{id}(id=${cat.id})}" class="btn btn-danger">Delete</a>
-                <a th:href = "@{/category/overview/{id}(id=${cat.id})}" class="btn btn-primary btn-sm mb-3"> Overview </a>
+                <a th:href = "@{/category/overview/{id}(id=${cat.id})}" class="btn btn-primary"> Overview </a>
             </td>
         </tr>
         </tbody>

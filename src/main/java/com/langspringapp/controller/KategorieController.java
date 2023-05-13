@@ -6,16 +6,16 @@ import com.langspringapp.model.Slowka;
 import com.langspringapp.service.JezykiService;
 import com.langspringapp.service.KategorieService;
 import com.langspringapp.service.SlowkaService;
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class KategorieController {
@@ -76,9 +76,8 @@ public class KategorieController {
         return "category_vocab";
     }
 
-    //funkcja do pisania
-    @GetMapping("/category/overview/writing?{id}&{id_slowka})")
-    public String writingCategory(@PathVariable (value = "id_zestawu") int id, @PathVariable(value = "id_slowka") int id_slowka, Model model) {
+    @GetMapping("/category/overview/writing")
+    public String writingCategory(@ModelAttribute (value = "id_zestawu") int id, @ModelAttribute(value = "id_slowka") int id_slowka, Model model) {
         List<Slowka> slowkaList = slowkaService.listAll();
         ArrayList<Slowka> slowkaWKategorii = new ArrayList<Slowka>();
         for (Slowka s: slowkaList) {
@@ -87,9 +86,12 @@ public class KategorieController {
                 slowkaWKategorii.add(s);
             }
         }
-        model.addAttribute("slowkaWKategorii", slowkaWKategorii);
+        String slowko = slowkaWKategorii.get(id_slowka).getSlowko();
+        String tlumaczenie = slowkaWKategorii.get(id_slowka).getTlumaczenie();
         model.addAttribute("id_zestawu",id);
         model.addAttribute("id_slowka",id_slowka);
+        model.addAttribute("slowko",slowko);
+        model.addAttribute("tlumaczenie", tlumaczenie);
         return "writing";
     }
 }

@@ -42,10 +42,10 @@
         <div class="col-sm-12">
             <form>
                 <div class="form-group">
-                    <p th:text="${slowkaWKategorii[${id_slowka}].slowko}"></p>
+                    <p th:text="${tlumaczenie}"></p>
                     <input type="text" class="form-control" id="slowko">
                 </div>
-                <button type="submit" class="btn btn-default"><a th:href="@{/category/overview/writing/{id_zestawu}/{id_slowka}(id_slowka=${id_slowka}+1)}">Dalej</a></button>
+                <button type="submit" class="btn btn-dark"><a th:href="@{/category/overview/writing(id_zestawu=${id_zestawu},id_slowka=${id_slowka + 1})}">Dalej</a></button>
             </form>
         </div>
     </div>
