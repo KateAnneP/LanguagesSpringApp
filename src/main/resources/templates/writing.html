@@ -43,9 +43,14 @@
             <form>
                 <div class="form-group">
                     <p th:text="${tlumaczenie}"></p>
-                    <input type="text" class="form-control" id="slowko">
+                    <input type="text" class="form-control" id="slowko" th:value="${answer}">
                 </div>
-                <button type="submit" class="btn btn-dark"><a th:href="@{/category/overview/writing(id_zestawu=${id_zestawu},id_slowka=${id_slowka + 1})}">Dalej</a></button>
+                <div th:if="${answer} == ${slowko}">
+                    <button type="submit" class="btn btn-dark"><a th:href="@{/category/overview/writing(id_zestawu=${id_zestawu},id_slowka=${id_slowka + 1})}">Dalej</a></button>
+                </div>
+                <div th:unless="${answer} == ${slowko}">
+                    <p>Odpowiedź nieprawidłowa</p>
+                </div>
             </form>
         </div>
     </div>

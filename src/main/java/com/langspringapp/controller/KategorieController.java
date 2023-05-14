@@ -93,5 +93,13 @@ public class KategorieController {
         model.addAttribute("slowko",slowko);
         model.addAttribute("tlumaczenie", tlumaczenie);
         return "writing";
+
+        //jeśli jest nieprawidłowa odpowiedź, to przekazywane jest do kontrolera to samo id, które potem zwiększane jest w kontrolerze, a słówko na koniec
+        //zrób, żeby lista w kontrolerze była globalna
+
+        //zrób w repo funkcję do wyszukiwania po id kategorii i zestawu
+        //potem zrob tablicę w kontrolerze która zapisuje bledne id
+        //i na koniec sprawdzaj, czy juz id doszlo do konca wielkosci tablicy z kategoria
+        //i jesli tak, to przechodzisz przez kazde z blednych id, usuwajac je potem
     }
 }

@@ -9,7 +9,7 @@
 
     </style>
 </head>
-<body>
+<body th:if="${session.user.getRola() == 1 || session.user.getRola() == 0}">
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
@@ -33,7 +33,7 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <button class="btn btn-default" type="button">Wyloguj się</button>
+                <button class="btn btn-primary" type="button" ><a th:href="@{/logout}"> Wyloguj się </a></button>
             </form>
         </div>
     </div>
