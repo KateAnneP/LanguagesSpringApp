@@ -41,23 +41,21 @@
 </nav>
 
 <div class="container">
-    <h1>Słówka</h1>
+    <h1>Użytkownicy</h1>
     <hr>
-    <h2>Zaktualizuj słówko</h2>
+    <h2>Zaktualizuj użytkownika:</h2>
 
-    <form action="#" th:action="@{/vocab/save}" th:object="${slowko}" method="POST">
+    <form action="#" th:action="@{/users/save}" th:object="${user}" method="POST">
         <input type="hidden" th:field="*{id}" />
-        <input type="text" th:field="*{slowko}" class="form-control mb-4 col-4" placeholder="Słówko">
-        <input type="text" th:field="*{tlumaczenie}" class="form-control mb-4 col-4" placeholder="Tłumaczenie">
-        <input type="text" th:field="*{jezyk}" class="form-control mb-4 col-4" placeholder="Język">
-        <input type="text" th:field="*{kategoria}" class="form-control mb-4 col-4" placeholder="Kategoria">
-        <input type="text" th:field="*{zestaw}" class="form-control mb-4 col-4" placeholder="Zestaw">
+        <input type="text" th:field="*{login}" placeholder="Login" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{haslo}" placeholder="Hasło" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{rola}" placeholder="Rola" class="form-control mb-4 col-4">
         <button type="submit" class="btn btn-info col-2">Zaktualizuj</button>
     </form>
 
     <hr>
 
-    <a th:href = "@{/vocab}">Powrót do listy słówek</a>
+    <a th:href = "@{/users}">Powrót do listy użytkowników</a>
 </div>
 </body>
 </html>

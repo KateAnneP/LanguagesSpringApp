@@ -25,6 +25,8 @@ public class KategorieController {
     @Autowired(required = true)
     private SlowkaService slowkaService;
 
+
+
     @GetMapping("/category")
     public String viewCategoryPage(Model model) {
         List<Kategorie> kategorieList = kategorieService.listAll();
@@ -63,7 +65,7 @@ public class KategorieController {
     public String overviewCategory(@PathVariable (value = "id") int id, Model model) {
         List<Slowka> slowkaList = slowkaService.listAll();
         ArrayList<Slowka> slowkaWKategorii = new ArrayList<Slowka>();
-        int id_slowka = 0; //do ćwiczenia słówek
+
         for (Slowka s: slowkaList) {
             if(s.getKategoria() == id)
             {
@@ -72,12 +74,31 @@ public class KategorieController {
         }
         model.addAttribute("slowkaWKategorii", slowkaWKategorii);
         model.addAttribute("id_zestawu",id);
-        model.addAttribute("id_slowka", id_slowka);
         return "category_vocab";
     }
 
     @GetMapping("/category/overview/writing")
-    public String writingCategory(@ModelAttribute (value = "id_zestawu") int id, @ModelAttribute(value = "id_slowka") int id_slowka, Model model) {
+    public String writing(@ModelAttribute (value = "id_zestawu") int id, Model model) {
+        int id_slowka = 0;
+        List<Slowka> slowkaList = slowkaService.listAll();
+        ArrayList<Slowka> slowkaWKategorii = new ArrayList<Slowka>();
+        for (Slowka s : slowkaList) {
+            if (s.getKategoria() == id) {
+                slowkaWKategorii.add(s);
+            }
+        }
+        String slowko = slowkaWKategorii.get(id_slowka).getSlowko();
+        String tlumaczenie = slowkaWKategorii.get(id_slowka).getTlumaczenie();
+        model.addAttribute("id_zestawu", id);
+        model.addAttribute("id_slowka", id_slowka);
+        model.addAttribute("slowko", slowko);
+        model.addAttribute("tlumaczenie", tlumaczenie);
+        return "writing";
+    }
+
+    @PostMapping("/category/overview/writingcheck")
+    public String writingCheck(@ModelAttribute(value = "id_zestawu") int id, @ModelAttribute(value = "id_slowka") int id_slowka, @RequestParam(name="answer") String answer, Model model) {
+
         List<Slowka> slowkaList = slowkaService.listAll();
         ArrayList<Slowka> slowkaWKategorii = new ArrayList<Slowka>();
         for (Slowka s: slowkaList) {
@@ -86,20 +107,27 @@ public class KategorieController {
                 slowkaWKategorii.add(s);
             }
         }
+
+        String tekst = "";
+            if(!answer.equals(slowkaWKategorii.get(id_slowka).getSlowko()))
+            {
+                tekst = "Prawidłowa odpowiedź to: " + slowkaWKategorii.get(id_slowka).getSlowko();
+            }
+            else {
+                tekst = "Brawo! To prawidłowa odpowiedź";
+            }
+        System.out.println("Odpowiedź: " + answer);
+        id_slowka++;
         String slowko = slowkaWKategorii.get(id_slowka).getSlowko();
         String tlumaczenie = slowkaWKategorii.get(id_slowka).getTlumaczenie();
         model.addAttribute("id_zestawu",id);
         model.addAttribute("id_slowka",id_slowka);
         model.addAttribute("slowko",slowko);
         model.addAttribute("tlumaczenie", tlumaczenie);
+        model.addAttribute("tekst",tekst);
         return "writing";
 
-        //jeśli jest nieprawidłowa odpowiedź, to przekazywane jest do kontrolera to samo id, które potem zwiększane jest w kontrolerze, a słówko na koniec
-        //zrób, żeby lista w kontrolerze była globalna
 
-        //zrób w repo funkcję do wyszukiwania po id kategorii i zestawu
-        //potem zrob tablicę w kontrolerze która zapisuje bledne id
-        //i na koniec sprawdzaj, czy juz id doszlo do konca wielkosci tablicy z kategoria
-        //i jesli tak, to przechodzisz przez kazde z blednych id, usuwajac je potem
+
     }
 }
